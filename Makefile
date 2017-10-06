@@ -1,4 +1,5 @@
 report:
+	make clean
 	make bench > benchmarks.txt
 	make asm
 	cat benchmarks.txt
@@ -23,7 +24,6 @@ asm:
 	(cd betterhint && go build main.go && go tool objdump -S -s encodeFixed64 ./main > main.s)
 
 bench:
-	make clean
 	(cd onebyone && go test -bench=.)
 	(cd withbinary && go test -bench=.)
 	(cd withunsafe && go test -bench=.)
