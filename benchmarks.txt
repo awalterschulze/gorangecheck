@@ -1,0 +1,46 @@
+make clean
+(cd onebyone && rm main.s || true)
+(cd withbinary && rm main.s || true)
+(cd withunsafe && rm main.s || true)
+(cd withhint && rm main.s || true)
+(cd betterhint && rm main.s || true)
+(cd onebyone && rm main || true)
+(cd withbinary && rm main || true)
+(cd withunsafe && rm main || true)
+(cd withhint && rm main || true)
+(cd betterhint && rm main || true)
+(cd onebyone && go test -bench=.)
+goos: darwin
+goarch: amd64
+pkg: github.com/awalterschulze/gorangecheck/onebyone
+BenchmarkEncodeFixed64-8   	300000000	         5.69 ns/op
+PASS
+ok  	github.com/awalterschulze/gorangecheck/onebyone	2.301s
+(cd withbinary && go test -bench=.)
+goos: darwin
+goarch: amd64
+pkg: github.com/awalterschulze/gorangecheck/withbinary
+BenchmarkEncodeFixed64-8   	500000000	         3.14 ns/op
+PASS
+ok  	github.com/awalterschulze/gorangecheck/withbinary	1.893s
+(cd withunsafe && go test -bench=.)
+goos: darwin
+goarch: amd64
+pkg: github.com/awalterschulze/gorangecheck/withunsafe
+BenchmarkEncodeFixed64-8   	1000000000	         2.84 ns/op
+PASS
+ok  	github.com/awalterschulze/gorangecheck/withunsafe	3.132s
+(cd withhint && go test -bench=.)
+goos: darwin
+goarch: amd64
+pkg: github.com/awalterschulze/gorangecheck/withhint
+BenchmarkEncodeFixed64-8   	300000000	         5.79 ns/op
+PASS
+ok  	github.com/awalterschulze/gorangecheck/withhint	2.315s
+(cd betterhint && go test -bench=.)
+goos: darwin
+goarch: amd64
+pkg: github.com/awalterschulze/gorangecheck/betterhint
+BenchmarkEncodeFixed64-8   	500000000	         3.40 ns/op
+PASS
+ok  	github.com/awalterschulze/gorangecheck/betterhint	2.081s
